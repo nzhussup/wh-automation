@@ -2,6 +2,11 @@
 
 Interactive Python CLI (Typer + Rich) to generate and PATCH monthly time-entry `hoursjson` into an existing SharePoint item through the Power Apps invoke endpoint.
 
+## Why This Exists
+
+I built this because I got fed up with the horrible UX of the internal time-tracking app.  
+There was no reliable bulk-entry option, so this CLI lets me prepare and submit a whole month in one flow.
+
 ## Features
 
 - Poetry-managed project with typed modular code under `src/`
@@ -24,7 +29,7 @@ poetry run powerapps-time setup
 ```env
 POWERAPPS_BEARER_TOKEN=...paste from authenticated browser session...
 POWERAPPS_EMAIL=your.name@company.com
-POWERAPPS_INVOKE_URL=https://52aa9e92-f1fe-e676-b6bf-c3a2e0148841.02.common.europe002.azure-apihub.net/invoke
+POWERAPPS_INVOKE_URL=https://<your-env-id>.02.common.europe002.azure-apihub.net/invoke
 POWERAPPS_REQUEST_URL=/apim/sharepointonline/<connection-id>/datasets/<site-encoded>/tables/<list-id>/items/<item-id>
 POWERAPPS_ORIGIN=https://apps.powerapps.com
 POWERAPPS_REFERER=https://apps.powerapps.com/
@@ -51,7 +56,7 @@ Flow:
 ```bash
 poetry run powerapps-time preview
 poetry run powerapps-time validate
-poetry run powerapps-time submit --item-id 1194 --yes
+poetry run powerapps-time submit --item-id <item-id> --yes
 ```
 
 ## Notes
